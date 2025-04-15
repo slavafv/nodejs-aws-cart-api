@@ -1,0 +1,33 @@
+# Development artifacts
+node_modules        # Package dependencies that should be installed fresh in container
+dist               # Compiled output - will be rebuilt in container
+coverage           # Test coverage reports - not needed in production
+.git*              # Git repository files - not needed for running the app
+.env*              # Environment files with sensitive data
+*.log              # Log files
+.npm               # NPM cache directory
+
+# Development files
+test               # Test files not needed in production
+src/**/*.spec.ts   # Test files within src directory
+src/**/*.test.ts   # Additional test files
+.eslintrc*        # Linting configuration
+.prettierrc*      # Code formatting configuration
+jest.config.*     # Test configuration
+tsconfig*.json    # TypeScript configuration - will be used during build only
+
+# Documentation and markdown
+*.md              # Documentation files
+docs/             # Documentation directory
+
+# IDE specific files
+.idea/            # IntelliJ IDEA
+.vscode/          # Visual Studio Code
+*.sublime-*       # Sublime Text
+.DS_Store         # macOS system files
+
+# Infrastructure and deployment
+infrastructure/   # AWS CDK infrastructure code
+docker-compose*   # Local development docker compose files
+Dockerfile*       # Docker build files
+.dockerignore     # Docker ignore file
