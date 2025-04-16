@@ -1,7 +1,7 @@
 # Build stage
 FROM node:20-alpine AS builder
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
@@ -15,10 +15,13 @@ COPY . .
 # Build the application
 RUN npm run build
 
+# Remove dev dependencies for production
+RUN npm prune --omit=dev
+
 # Production stage
 FROM node:20-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
@@ -27,7 +30,7 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # Copy built application from builder stage
-COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /app/dist ./dist
 
 # Create a non-root user
 USER node
