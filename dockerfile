@@ -43,4 +43,4 @@ ENV NODE_ENV=production
 EXPOSE 4000
 
 # Start the application using the production script
-CMD ["node", "dist/src/main.js"]
+CMD ["node", "dist/main.js"]
